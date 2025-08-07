@@ -85,7 +85,7 @@ export class PromptHandler {
         initialValue: false
       }),
       dueDate: ({ results }) => {
-        if (!results.hasDueDate) return null;
+        if (!results.hasDueDate) return Promise.resolve(null);
         
         return p.text({
           message: 'Enter due date (YYYY-MM-DD):',
@@ -201,7 +201,7 @@ export class PromptHandler {
         initialValue: false
       }),
       dueDate: ({ results }) => {
-        if (!results.updateDueDate) return todo.dueDate;
+        if (!results.updateDueDate) return Promise.resolve(todo.dueDate);
         
         return p.text({
           message: 'Enter new due date (YYYY-MM-DD) or leave empty to remove:',
@@ -280,10 +280,23 @@ export class PromptHandler {
   }
 
   static async pressAnyKey(message = 'Press any key to continue...') {
-    await p.text({
-      message,
-      placeholder: '',
-      validate: () => true
+    console.log('\n' + color.gray(message));
+    
+    return new Promise((resolve) => {
+      const stdin = process.stdin;
+      stdin.setRawMode(true);
+      stdin.resume();
+      stdin.setEncoding('utf8');
+      
+      const onData = () => {
+        stdin.setRawMode(false);
+        stdin.pause();
+        stdin.removeListener('data', onData);
+        console.log(); // Add a newline
+        resolve();
+      };
+      
+      stdin.on('data', onData);
     });
   }
 
@@ -293,10 +306,10 @@ export class PromptHandler {
     
     try {
       const result = await promise;
-      spinner.stop(color.green('✅ Done'));
+      spinner.stop(color.green('DONE'));
       return result;
     } catch (error) {
-      spinner.stop(color.red('❌ Error'));
+      spinner.stop(color.red('ERROR'));
       throw error;
     }
   }
