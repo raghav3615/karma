@@ -2,7 +2,7 @@
 
 A beautiful, professional todo list application for the command line with a clean and elegant interface.
 
-Shoutout @adarsh-sng for the idea
+Shoutout [@adarsh-sng] (https://www.github.com/adarsh-sng) for the idea
 
 ## Features
 
