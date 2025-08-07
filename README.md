@@ -1,4 +1,4 @@
-# Karma - Elegant CLI Todo Manager
+# Karma - CLI Todo Manager
 
 A beautiful, professional todo list application for the command line with a clean and elegant interface.
 
