@@ -1,0 +1,34 @@
+{
+  "name": "karma-cli-todo",
+  "version": "1.0.0",
+  "description": "Elegant CLI Todo Manager",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "CLI",
+    "todo",
+    "productivity",
+    "karma"
+  ],
+  "bin": {
+    "karma": "./index.js"
+  },
+  "author": "Raghav Dadhich",
+  "license": "ISC",
+  "dependencies": {
+    "@clack/prompts": "^0.7.0",
+    "picocolors": "^1.0.0",
+    "fs-extra": "^11.1.1",
+    "date-fns": "^2.30.0",
+    "commander": "^11.0.0",
+    "cli-table3": "^0.6.3",
+    "inquirer": "^9.2.7",
+    "boxen": "^7.1.1",
+    "figlet": "^1.6.0",
+    "chalk": "^5.3.0"
+  }
+}
